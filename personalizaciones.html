@@ -1,16 +1,70 @@
 <!doctype html>
-<html lang="es"><head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#171717">
-  <title>OSLUZ | Personalizaciones</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><script src="js/shell.js" defer></script>
-</head><body data-page="personalizaciones"><header data-site-header></header><main>
-  <section class="hero"><div class="hero-content"><h1>Diseña tu prenda</h1><p>Llevamos tus ideas al vestuario boutique</p></div></section>
-  <section class="process section-paper"><div class="content-wrap"><h2>¿Cómo personalizar tu prenda?</h2>
-    <div class="process-steps">
-      <article><h3><span>Paso 1:</span> Elige tu prenda base</h3><p>Selecciona si deseas camiseta, buso/hoodie o accesorio, junto con el color y talla de tu preferencia.</p></article>
-      <article><h3><span>Paso 2:</span> Envíanos tu idea</h3><p>Al dar clic en el botón de abajo, compártenos tu imagen, frase, logo o idea de diseño en alta calidad.</p></article>
-      <article><h3><span>Paso 3:</span> Cotización y producción</h3><p>Confirmamos detalles de estampado/bordado, valor final y tiempo de entrega para comenzar a crear tu pieza única.</p></article>
-    </div>
-    <div class="contact-links" data-contact-links></div>
-  </div></section>
-</main></body></html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142534"><meta name="description" content="Personaliza camisetas, hoodies y accesorios OSLUZ con tu propio diseño.">
+  <title>Diseña tu prenda | OSLUZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"><script src="js/shell.js" defer></script><script src="js/customizer.js" defer></script>
+</head>
+<body data-page="personalizaciones">
+  <header data-site-header></header>
+  <main>
+    <section class="hero customizer-hero"><div class="hero-content"><span class="eyebrow">OSLUZ · Diseño textil personalizado</span><h1>Tu idea. Tu prenda.</h1><p>Personalizamos camisetas, hoodies y tote bags con el diseño que elijas.</p></div></section>
+    <section class="customizer-section">
+      <form class="customizer" id="customizer-form">
+        <div class="customizer-controls">
+          <div class="customizer-heading"><span class="step-label">CREA TU MOCKUP</span><h2>Diseña la tuya</h2><p>Elige una prenda, un color y carga tu diseño.</p></div>
+
+          <fieldset class="customizer-field"><legend>1. Elige el producto</legend><div class="product-choices">
+            <label class="product-choice"><input type="radio" name="producto" value="Camiseta" checked><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 5 6 8 3 15l6 2 2-3v13h10V14l2 3 6-2-3-7-5-3c-.5 3-2.3 5-5 5s-4.5-2-5-5Z"/></svg></span><span>Camiseta</span></label>
+            <label class="product-choice"><input type="radio" name="producto" value="Hoodie"><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 9 7 11l-3 5 4 2 2-2v11h12V16l2 2 4-2-3-5-4-2c0 3-2 5-5 5s-5-2-5-5Z"/><path d="M11 9c0-4 2-6 5-6s5 2 5 6"/></svg></span><span>Hoodie</span></label>
+            <label class="product-choice"><input type="radio" name="producto" value="Tote bag"><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 12h20l-2 16H8Z"/><path d="M11 13V9a5 5 0 0 1 10 0v4"/></svg></span><span>Tote bag</span></label>
+          </div></fieldset>
+
+          <fieldset class="customizer-field"><legend>2. Escoge el color</legend><div class="color-choices">
+            <button class="color-swatch is-selected" type="button" data-color="#252a2d" data-color-name="Negro" style="--swatch:#252a2d" aria-label="Negro" aria-pressed="true"></button>
+            <button class="color-swatch" type="button" data-color="#f4f0e8" data-color-name="Marfil" style="--swatch:#f4f0e8" aria-label="Marfil" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#263d34" data-color-name="Verde bosque" style="--swatch:#263d34" aria-label="Verde bosque" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#7a343d" data-color-name="Vino" style="--swatch:#7a343d" aria-label="Vino" aria-pressed="false"></button>
+            <span class="selected-color" id="selected-color">Negro</span>
+          </div><input type="hidden" name="color" value="Negro"></fieldset>
+
+          <div class="customizer-field-row">
+            <label class="customizer-field"><span>3. Talla</span><select name="talla"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option value="Talla única">Talla única</option></select><small class="size-hint">Tallas y colores sujetos a disponibilidad.</small></label>
+            <label class="customizer-field"><span>Cantidad</span><input name="cantidad" type="number" min="1" value="1" required></label>
+          </div>
+
+          <div class="customizer-field upload-field"><label for="design-file"><span class="step-label">4. TU DISEÑO</span><strong>Sube una imagen</strong><span class="upload-help">PNG transparente recomendado · JPG o WEBP · hasta 10 MB</span><span class="upload-button">Elegir archivo</span></label><input id="design-file" name="imagen" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-filename" id="upload-filename" aria-live="polite">No has elegido una imagen</span></div>
+
+          <label class="customizer-field size-control" for="design-size"><span>Tamaño del estampado</span><input id="design-size" type="range" min="22" max="64" value="42"><span class="size-hint">Ajusta el tamaño en la vista previa</span></label>
+          <button class="button button-primary quote-button" type="submit">Cotizar por WhatsApp <span aria-hidden="true">→</span></button>
+          <p class="upload-disclaimer">En móviles compatibles podrás compartir la imagen junto con tu solicitud. Si no se adjunta automáticamente, envíala en el chat de WhatsApp.</p>
+        </div>
+
+        <div class="preview-column"><div class="preview-heading"><div><span class="step-label">VISTA PREVIA</span><h2>Así podría verse</h2></div><span class="preview-badge">Mockup orientativo</span></div>
+          <div class="product-preview" id="product-preview" data-product="Camiseta" style="--garment-color:#252a2d">
+            <svg class="garment-art" data-garment="Camiseta" viewBox="0 0 360 390" role="img" aria-label="Vista previa de camiseta">
+              <path class="garment-shape" d="M111 47 147 29c5 17 16 27 33 27s28-10 33-27l36 18 69 48-38 59-38-25v211H118V129l-38 25-38-59z"/>
+              <path class="garment-detail" d="M147 30c3 18 15 29 33 29s30-11 33-29M118 129v211m110-211v211"/>
+            </svg>
+            <svg class="garment-art" data-garment="Hoodie" viewBox="0 0 360 390" role="img" aria-label="Vista previa de hoodie" hidden>
+              <path class="garment-shape" d="M119 75 145 58c-2-29 13-47 35-47s37 18 35 47l26 17 52 38-31 58-30-20v196H128V151l-30 20-31-58z"/>
+              <path class="garment-detail" d="M145 58c7 19 19 29 35 29s28-10 35-29m-35 29v39m-55 25v196m110-196v196m-89-59h68"/>
+            </svg>
+            <svg class="garment-art" data-garment="Tote bag" viewBox="0 0 360 390" role="img" aria-label="Vista previa de tote bag" hidden>
+              <path class="garment-shape" d="M85 120h190l-14 235H99z"/>
+              <path class="garment-detail" d="M130 126V90c0-28 18-48 50-48s50 20 50 48v36"/>
+            </svg>
+            <div class="print-area" aria-label="Área de estampado"><img id="design-preview" alt="Tu diseño sobre la prenda" hidden></div>
+            <span class="preview-product-name" id="preview-product-name">CAMISETA</span>
+          </div>
+          <p class="preview-footnote">La ubicación se muestra como referencia. El resultado final se confirma contigo antes de producir.</p>
+        </div>
+      </form>
+    </section>
+    <section class="customizer-benefits"><div><strong>01</strong><span>Elige y personaliza</span></div><div><strong>02</strong><span>Recibe tu cotización</span></div><div><strong>03</strong><span>Aprueba antes de producir</span></div></section>
+  </main>
+</body>
+</html>

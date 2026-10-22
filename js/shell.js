@@ -1,6 +1,6 @@
 const pages = [
   { id: 'inicio', label: 'Inicio', href: 'index.html', terms: 'personaliza representa productos únicos camisetas estampados calidad premium hoodie buso' },
-  { id: 'personalizaciones', label: 'Personalizaciones', href: 'personalizaciones.html', terms: 'diseña prenda personalizar camiseta buso hoodie accesorio talla color producción cotizar' },
+  { id: 'personalizaciones', label: 'Personaliza', href: 'personalizaciones.html', terms: 'diseña prenda personalizar camiseta buso hoodie accesorio talla color producción cotizar' },
   { id: 'colecciones', label: 'Colecciones', href: 'colecciones.html', terms: 'camisetas busos hoodies accesorios tote bags gorras termos llaveros diseños catálogo' },
   { id: 'nosotros', label: 'Nosotros', href: 'nosotros.html', terms: 'nuestra esencia exclusividad libertad expresión autenticidad vestuario' },
   { id: 'cotizacion', label: 'Cotización', href: 'cotizacion.html', terms: 'precios tarifas vectorización estampado bordado envíos condiciones comerciales' },

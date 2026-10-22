@@ -24,5 +24,6 @@ Las fotografías adjuntas ya están organizadas en `assets/` y enlazadas desde l
 - La página `cotizacion.html` incluye un cotizador que prepara el mensaje con producto, técnica, cantidad y ciudad.
 - La galería de `colecciones.html` se filtra por tipo de producto.
 - El acceso flotante a WhatsApp permanece disponible en todas las páginas.
+- `personalizaciones.html` incluye un personalizador visual: prenda, color, talla, cantidad, carga de imagen y tamaño del estampado.
 
-El sitio no procesa pagos ni guarda pedidos: la cotización y confirmación se realizan directamente por WhatsApp.
+El sitio no procesa pagos ni guarda pedidos: la cotización y confirmación se realizan directamente por WhatsApp. El mockup orientativo se genera en el navegador; los móviles compatibles pueden abrir la hoja de compartir para enviar la imagen junto con el texto. En otros casos, el visitante deberá adjuntarla manualmente al chat.
