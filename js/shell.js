@@ -1,7 +1,7 @@
 const pages = [
-  { id: 'inicio', label: 'Inicio', href: 'index.html', terms: 'personaliza representa productos únicos camisetas estampados calidad premium' },
-  { id: 'personalizaciones', label: 'Personalizaciones', href: 'personalizaciones.html', terms: 'diseña prenda personalizar camiseta buso hoodie accesorio talla color producción' },
-  { id: 'colecciones', label: 'Colecciones', href: 'colecciones.html', terms: 'camisetas busos hoodies accesorios tote bags gorras termos llaveros diseños' },
+  { id: 'inicio', label: 'Inicio', href: 'index.html', terms: 'personaliza representa productos únicos camisetas estampados calidad premium hoodie buso' },
+  { id: 'personalizaciones', label: 'Personalizaciones', href: 'personalizaciones.html', terms: 'diseña prenda personalizar camiseta buso hoodie accesorio talla color producción cotizar' },
+  { id: 'colecciones', label: 'Colecciones', href: 'colecciones.html', terms: 'camisetas busos hoodies accesorios tote bags gorras termos llaveros diseños catálogo' },
   { id: 'nosotros', label: 'Nosotros', href: 'nosotros.html', terms: 'nuestra esencia exclusividad libertad expresión autenticidad vestuario' },
   { id: 'cotizacion', label: 'Cotización', href: 'cotizacion.html', terms: 'precios tarifas vectorización estampado bordado envíos condiciones comerciales' },
   { id: 'contactanos', label: 'Contáctanos', href: 'contactanos.html', terms: 'whatsapp correo electrónico instagram facebook horario bogotá' },
@@ -61,6 +61,51 @@ onScroll();
 
 const contactMarkup = `<a class="whatsapp-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Escribir a OSLUZ por WhatsApp"><img src="assets/whatsapp-icon.png" alt="WhatsApp" loading="lazy"></a><a class="qr-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Abrir enlace de WhatsApp del código QR"><img src="assets/whatsapp-qr.png" alt="Código QR de WhatsApp de OSLUZ" loading="lazy"></a>`;
 document.querySelectorAll('[data-contact-links]').forEach((target) => { target.innerHTML = contactMarkup; });
+
+const whatsappUrl = (message) => `https://wa.me/573138070645?text=${encodeURIComponent(message)}`;
+document.querySelectorAll('[data-whatsapp-message]').forEach((link) => {
+  link.href = whatsappUrl(link.dataset.whatsappMessage);
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+});
+
+const quoteForm = document.querySelector('#quote-form');
+quoteForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(quoteForm);
+  const message = [
+    'Hola OSLUZ, quiero cotizar un producto personalizado.',
+    `Producto: ${formData.get('producto')}`,
+    `Técnica: ${formData.get('tecnica')}`,
+    `Cantidad: ${formData.get('cantidad')}`,
+    `Ciudad: ${formData.get('ciudad') || 'Por confirmar'}`,
+    '¿Me ayudan con las opciones y el valor final?'
+  ].join('\n');
+  window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
+});
+
+document.querySelectorAll('.gallery-filters [data-filter]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    document.querySelectorAll('.gallery-filters [data-filter]').forEach((item) => {
+      const active = item === button;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    document.querySelectorAll('.design-item[data-category]').forEach((card) => {
+      card.hidden = filter !== 'todos' && card.dataset.category !== filter;
+    });
+  });
+});
+
+const floatingWhatsapp = document.createElement('a');
+floatingWhatsapp.className = 'whatsapp-float';
+floatingWhatsapp.href = whatsappUrl('Hola OSLUZ, quiero recibir asesoría para personalizar un producto.');
+floatingWhatsapp.target = '_blank';
+floatingWhatsapp.rel = 'noopener noreferrer';
+floatingWhatsapp.setAttribute('aria-label', 'Hablar con OSLUZ por WhatsApp');
+floatingWhatsapp.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.5a12 12 0 0 0-10.2 18.3L4.2 28l6.5-1.7A12 12 0 1 0 16 3.5Z"/><path d="M12 10.3c.4-.4 1-.3 1.3.2l1.5 2.4c.3.5.2.9-.2 1.3l-.8.8c.8 1.7 2.1 3 3.8 3.8l.8-.8c.4-.4.8-.5 1.3-.2l2.4 1.4c.5.3.6.9.2 1.3-.7 1-1.7 1.5-2.9 1.5-2.1 0-4.6-1.4-6.6-3.4s-3.4-4.5-3.4-6.6c0-.7.7-1.4 1.6-1.7Z"/></svg><span>Escríbenos</span>';
+document.body.append(floatingWhatsapp);
 
 document.querySelectorAll('.faq-row button').forEach((button) => {
   button.addEventListener('click', () => {
