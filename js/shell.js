@@ -9,6 +9,21 @@ const pages = [
 ];
 
 const currentPage = document.body.dataset.page || 'inicio';
+const heroTitle = document.querySelector('.hero-home h1');
+if (heroTitle && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  heroTitle.setAttribute('aria-label', 'Tu idea, hecha prenda.');
+  heroTitle.querySelectorAll('.hero-title-line').forEach((line) => {
+    line.setAttribute('aria-hidden', 'true');
+    const letters = Array.from(line.textContent);
+    line.replaceChildren(...letters.map((character, index) => {
+      const letter = document.createElement('span');
+      letter.className = 'hero-letter';
+      letter.style.setProperty('--letter-index', index);
+      letter.textContent = character === ' ' ? '\u00a0' : character;
+      return letter;
+    }));
+  });
+}
 const header = document.querySelector('[data-site-header]');
 const navLinks = pages.map((page) => `<a href="${page.href}"${page.id === currentPage ? ' aria-current="page"' : ''}>${page.label}</a>`).join('');
 
