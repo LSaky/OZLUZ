@@ -42,25 +42,46 @@ const searchButton = header.querySelector('.search-button');
 const searchForm = header.querySelector('.site-search');
 const searchResults = header.querySelector('.search-results');
 
+const closeMenu = () => {
+  nav.classList.remove('is-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Abrir menú');
+};
+
 menuButton.addEventListener('click', () => {
   const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+  if (!expanded) {
+    searchButton.setAttribute('aria-expanded', 'false');
+    searchButton.setAttribute('aria-label', 'Abrir búsqueda');
+    searchForm.hidden = true;
+  }
   menuButton.setAttribute('aria-expanded', String(!expanded));
   menuButton.setAttribute('aria-label', expanded ? 'Abrir menú' : 'Cerrar menú');
   nav.classList.toggle('is-open', !expanded);
 });
-nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-  nav.classList.remove('is-open');
-  menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.setAttribute('aria-label', 'Abrir menú');
-}));
+nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 
 searchButton.addEventListener('click', () => {
   const expanded = searchButton.getAttribute('aria-expanded') === 'true';
+  if (!expanded) closeMenu();
   searchButton.setAttribute('aria-expanded', String(!expanded));
   searchButton.setAttribute('aria-label', expanded ? 'Abrir búsqueda' : 'Cerrar búsqueda');
   searchForm.hidden = expanded;
   if (!expanded) searchForm.querySelector('input').focus();
 });
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  closeMenu();
+  searchButton.setAttribute('aria-expanded', 'false');
+  searchButton.setAttribute('aria-label', 'Abrir búsqueda');
+  searchForm.hidden = true;
+});
+const desktopLayout = window.matchMedia('(min-width: 761px)');
+const closeMenuOnDesktop = (event) => {
+  if (event.matches) closeMenu();
+};
+if (desktopLayout.addEventListener) desktopLayout.addEventListener('change', closeMenuOnDesktop);
+else desktopLayout.addListener(closeMenuOnDesktop);
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const query = searchForm.querySelector('input').value.trim().toLocaleLowerCase('es');
