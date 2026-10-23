@@ -14,7 +14,7 @@ Réplica estática, separada del sitio OHMLUZ original. Abre `index.html` para e
 - `css/style.css`: estilos compartidos y diseño adaptable
 - `js/shell.js`: navegación, búsqueda, QR/WhatsApp, encabezado e interacciones
 - `js/customizer.js`: selección de prenda, colores, vista previa y cotización
-- `assets/`: fotos de producto, imágenes de secciones, icono y QR de WhatsApp
+- `assets/`: imágenes de secciones, icono y QR de WhatsApp
 
 Las fotografías adjuntas ya están organizadas en `assets/` y enlazadas desde las páginas. Si mueves una imagen, conserva la ruta relativa usada en su etiqueta `<img>` o actualiza esa ruta en el HTML.
 
@@ -25,6 +25,8 @@ Las fotografías adjuntas ya están organizadas en `assets/` y enlazadas desde l
 - La página `cotizacion.html` incluye un cotizador que prepara el mensaje con producto, técnica, cantidad y ciudad.
 - La galería de `colecciones.html` se filtra por tipo de producto.
 - El acceso flotante a WhatsApp acompaña la navegación; el personalizador conserva su propio botón de cotización.
-- `personalizaciones.html` muestra fotos reales de camiseta, hoodie, gorra y tote bag, además de permitir elegir color, talla, cantidad, cargar una imagen y ajustar el estampado.
+- `personalizaciones.html` muestra prendas planas de referencia para camiseta, hoodie, gorra y tote bag, además de permitir elegir color, talla, cantidad, cargar una imagen y ajustar el estampado hasta 110%.
+
+Las fotos del personalizador se cargan desde Unsplash (camiseta y gorra), Made Blanks (hoodie) y Pexels (tote bag). Sus páginas de referencia: [camiseta](https://unsplash.com/photos/a-white-shirt-on-a-white-background-4rUYuwJ2vGw), [gorra](https://unsplash.com/photos/a-yellow-baseball-cap-on-a-white-background-8XZBP38QJFM), [hoodie](https://madeblanks.com/products/recess-terry-hoodie) y [tote bag](https://www.pexels.com/photo/plain-tote-bag-9869067/). Las fotos iniciales se corresponden con Marfil, Negro, Amarillo y Marfil respectivamente; al cambiar el producto, el selector aplica ese color de muestra.
 
 El sitio no procesa pagos ni guarda pedidos: la cotización y confirmación se realizan directamente por WhatsApp. La foto del producto es de referencia y el color final se confirma al cotizar. El mockup orientativo se genera en el navegador; los móviles compatibles pueden abrir la hoja de compartir para enviar la imagen junto con el texto. En otros casos, el visitante deberá adjuntarla manualmente al chat.

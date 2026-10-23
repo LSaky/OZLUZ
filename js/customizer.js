@@ -12,6 +12,8 @@ if (customizer) {
   const productName = document.querySelector('#preview-product-name');
   const previewColorDot = document.querySelector('#preview-color-dot');
   const previewColorName = document.querySelector('#preview-color-name');
+  const sizeValue = document.querySelector('#design-size-value');
+  const productBaseColors = { Camiseta: 'Marfil', Hoodie: 'Negro', Gorra: 'Amarillo', 'Tote bag': 'Marfil' };
   let currentObjectUrl = null;
   uniqueSizeOption.hidden = true;
   const clearDesignPreview = () => {
@@ -29,6 +31,7 @@ if (customizer) {
       preview.querySelectorAll('[data-product-image]').forEach((photo) => {
         photo.hidden = photo.dataset.productImage !== product;
       });
+      document.querySelector(`.color-swatch[data-color-name="${productBaseColors[product]}"]`)?.click();
       if (product === 'Tote bag' || product === 'Gorra') sizeSelect.value = 'Talla única';
       else if (sizeSelect.value === 'Talla única') sizeSelect.value = 'M';
       uniqueSizeOption.hidden = product !== 'Tote bag' && product !== 'Gorra';
@@ -51,6 +54,7 @@ if (customizer) {
 
   sizeInput.addEventListener('input', () => {
     designPreview.style.width = `${sizeInput.value}%`;
+    sizeValue.textContent = `${sizeInput.value}%`;
   });
 
   fileInput.addEventListener('change', () => {
