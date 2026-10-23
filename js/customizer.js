@@ -10,20 +10,28 @@ if (customizer) {
   const sizeSelect = customizer.elements.talla;
   const uniqueSizeOption = sizeSelect.querySelector('option[value="Talla única"]');
   const productName = document.querySelector('#preview-product-name');
+  const previewColorDot = document.querySelector('#preview-color-dot');
+  const previewColorName = document.querySelector('#preview-color-name');
   let currentObjectUrl = null;
   uniqueSizeOption.hidden = true;
+  const clearDesignPreview = () => {
+    if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    currentObjectUrl = null;
+    designPreview.removeAttribute('src');
+    designPreview.hidden = true;
+  };
 
   customizer.querySelectorAll('input[name="producto"]').forEach((input) => {
     input.addEventListener('change', () => {
       const product = input.value;
       preview.dataset.product = product;
       productName.textContent = product.toLocaleUpperCase('es');
-      preview.querySelectorAll('[data-garment]').forEach((garment) => {
-        garment.hidden = garment.dataset.garment !== product;
+      preview.querySelectorAll('[data-product-image]').forEach((photo) => {
+        photo.hidden = photo.dataset.productImage !== product;
       });
-      if (product === 'Tote bag') sizeSelect.value = 'Talla única';
+      if (product === 'Tote bag' || product === 'Gorra') sizeSelect.value = 'Talla única';
       else if (sizeSelect.value === 'Talla única') sizeSelect.value = 'M';
-      uniqueSizeOption.hidden = product !== 'Tote bag';
+      uniqueSizeOption.hidden = product !== 'Tote bag' && product !== 'Gorra';
     });
   });
 
@@ -34,9 +42,10 @@ if (customizer) {
         item.classList.toggle('is-selected', selected);
         item.setAttribute('aria-pressed', String(selected));
       });
-      preview.style.setProperty('--garment-color', swatch.dataset.color);
+      previewColorDot.style.backgroundColor = swatch.dataset.color;
       colorInput.value = swatch.dataset.colorName;
       document.querySelector('#selected-color').textContent = swatch.dataset.colorName;
+      previewColorName.textContent = `Color elegido: ${swatch.dataset.colorName}`;
     });
   });
 
@@ -47,26 +56,25 @@ if (customizer) {
   fileInput.addEventListener('change', () => {
     const file = fileInput.files?.[0];
     if (!file) {
-      if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
-      currentObjectUrl = null;
-      designPreview.removeAttribute('src');
-      designPreview.hidden = true;
+      clearDesignPreview();
       fileName.textContent = 'No has elegido una imagen';
       return;
     }
 
     if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+      clearDesignPreview();
       fileInput.value = '';
       fileName.textContent = 'Selecciona un archivo de imagen';
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
+      clearDesignPreview();
       fileInput.value = '';
       fileName.textContent = 'La imagen supera el máximo de 10 MB';
       return;
     }
 
-    if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    clearDesignPreview();
     currentObjectUrl = URL.createObjectURL(file);
     designPreview.src = currentObjectUrl;
     designPreview.hidden = false;

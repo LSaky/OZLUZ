@@ -13,6 +13,7 @@ Réplica estática, separada del sitio OHMLUZ original. Abre `index.html` para e
 - `preguntas-frecuentes.html`: Acordeón interactivo
 - `css/style.css`: estilos compartidos y diseño adaptable
 - `js/shell.js`: navegación, búsqueda, QR/WhatsApp, encabezado e interacciones
+- `js/customizer.js`: selección de prenda, colores, vista previa y cotización
 - `assets/`: fotos de producto, imágenes de secciones, icono y QR de WhatsApp
 
 Las fotografías adjuntas ya están organizadas en `assets/` y enlazadas desde las páginas. Si mueves una imagen, conserva la ruta relativa usada en su etiqueta `<img>` o actualiza esa ruta en el HTML.
@@ -23,7 +24,7 @@ Las fotografías adjuntas ya están organizadas en `assets/` y enlazadas desde l
 - Las tarjetas y diseños envían a WhatsApp un mensaje contextual.
 - La página `cotizacion.html` incluye un cotizador que prepara el mensaje con producto, técnica, cantidad y ciudad.
 - La galería de `colecciones.html` se filtra por tipo de producto.
-- El acceso flotante a WhatsApp permanece disponible en todas las páginas.
-- `personalizaciones.html` incluye un personalizador visual: prenda, color, talla, cantidad, carga de imagen y tamaño del estampado.
+- El acceso flotante a WhatsApp acompaña la navegación; el personalizador conserva su propio botón de cotización.
+- `personalizaciones.html` muestra fotos reales de camiseta, hoodie, gorra y tote bag, además de permitir elegir color, talla, cantidad, cargar una imagen y ajustar el estampado.
 
-El sitio no procesa pagos ni guarda pedidos: la cotización y confirmación se realizan directamente por WhatsApp. El mockup orientativo se genera en el navegador; los móviles compatibles pueden abrir la hoja de compartir para enviar la imagen junto con el texto. En otros casos, el visitante deberá adjuntarla manualmente al chat.
+El sitio no procesa pagos ni guarda pedidos: la cotización y confirmación se realizan directamente por WhatsApp. La foto del producto es de referencia y el color final se confirma al cotizar. El mockup orientativo se genera en el navegador; los móviles compatibles pueden abrir la hoja de compartir para enviar la imagen junto con el texto. En otros casos, el visitante deberá adjuntarla manualmente al chat.

@@ -322,14 +322,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .customizer-heading p { margin: 0; color: #5d6468; font: 400 15px/1.5 var(--sans); }
 .customizer-field { min-width: 0; margin: 0 0 23px; padding: 0; border: 0; }
 .customizer-field legend, .customizer-field > span:first-child { margin-bottom: 11px; display: block; color: #263b4a; font: 700 14px/1.4 var(--sans); }
-.product-choices { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+.product-choices { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px; }
 .product-choice { min-height: 74px; padding: 9px 5px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 1px solid #ddd6cb; border-radius: 7px; color: #3c454b; background: #fffefa; font: 600 12px/1.2 var(--sans); cursor: pointer; transition: border-color .18s ease, background .18s ease, box-shadow .18s ease; }
 .product-choice:has(input:checked) { border-color: #b3832c; background: #fbf4e6; box-shadow: inset 0 0 0 1px #b3832c; }
 .product-choice input { position: absolute; opacity: 0; pointer-events: none; }
 .product-choice:focus-within { outline: 3px solid #b3832c; outline-offset: 3px; }
 .choice-icon { color: #263f52; font: 500 23px/1 var(--sans); }
 .choice-icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.color-choices { display: flex; align-items: center; gap: 12px; }
+.color-choices { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .color-swatch { width: 30px; height: 30px; padding: 0; border: 3px solid #fffefa; border-radius: 50%; background: var(--swatch); box-shadow: 0 0 0 1px #c8c0b5; cursor: pointer; transition: transform .16s ease, box-shadow .16s ease; }
 .color-swatch:hover { transform: scale(1.08); }
 .color-swatch.is-selected { box-shadow: 0 0 0 2px #aa7823; }
@@ -353,22 +353,29 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .preview-heading { margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .preview-heading h2 { margin-bottom: 0; font-size: 23px; }
 .preview-badge { padding: 7px 9px; border-radius: 99px; color: #6b542b; background: #f6edda; white-space: nowrap; font: 700 10px/1.2 var(--sans); }
-.product-preview { position: relative; width: 100%; aspect-ratio: 1.04; display: grid; place-items: center; overflow: hidden; border-radius: 8px; background: radial-gradient(ellipse at 50% 40%, #fff 0, #f5f1ea 66%, #eee8dd 100%); }
-.garment-art { position: absolute; width: min(78%, 390px); height: 92%; overflow: visible; filter: drop-shadow(0 13px 10px #17263125); }
-.garment-shape { fill: var(--garment-color, #252a2d); stroke: #00000026; stroke-width: 2; transition: fill .2s ease; }
-.garment-detail { fill: none; stroke: #ffffff35; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.print-area { position: absolute; top: 44%; left: 50%; width: 45%; height: 35%; display: grid; place-items: center; transform: translate(-50%, -50%); pointer-events: none; }
+.product-preview { position: relative; width: 100%; aspect-ratio: 1.04; display: grid; place-items: center; overflow: hidden; border-radius: 8px; background: #e8e2d9; }
+.product-photo-frame { position: absolute; inset: 0; overflow: hidden; }
+.product-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.product-photo[data-product-image="Gorra"] { object-fit: contain; background: #f0efeb; }
+.product-photo[hidden], .tote-photo-crop[hidden] { display: none; }
+.tote-photo-crop { position: absolute; top: 5%; bottom: 5%; left: 34%; width: 32%; overflow: hidden; border-radius: 5px; background: #e6e5df; }
+.tote-photo-crop img { position: absolute; top: 0; right: 0; width: auto; max-width: none; height: 100%; object-fit: cover; object-position: right center; }
+.print-area { position: absolute; z-index: 2; top: 54%; left: 50%; width: 45%; height: 30%; display: grid; place-items: center; transform: translate(-50%, -50%); pointer-events: none; }
 .print-area img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 2px #0002); transition: width .12s ease; }
 .print-area img[hidden] { display: none; }
-.product-preview[data-product="Tote bag"] .print-area { top: 58%; width: 47%; height: 35%; }
-.product-preview[data-product="Hoodie"] .print-area { top: 47%; }
-.preview-product-name { position: absolute; right: 13px; bottom: 11px; color: #7d817f; font: 700 9px/1 var(--sans); letter-spacing: .16em; }
+.product-preview[data-product="Hoodie"] .print-area { top: 51%; }
+.product-preview[data-product="Gorra"] .print-area { top: 59%; width: 34%; height: 25%; }
+.product-preview[data-product="Tote bag"] .print-area { top: 59%; width: 34%; height: 27%; }
+body[data-page="personalizaciones"] .whatsapp-float { display: none; }
+.preview-color { position: absolute; z-index: 3; top: 12px; left: 12px; max-width: calc(100% - 24px); padding: 7px 9px; display: flex; align-items: center; gap: 7px; border: 1px solid #ffffffa8; border-radius: 99px; color: white; background: #182530c9; box-shadow: 0 2px 8px #0002; font: 600 10px/1 var(--sans); }
+.preview-color i { width: 13px; height: 13px; flex: 0 0 13px; border: 1px solid #ffffff9c; border-radius: 50%; background: #f4f0e8; }
+.preview-product-name { position: absolute; z-index: 3; right: 13px; bottom: 11px; padding: 6px 8px; border-radius: 3px; color: white; background: #182530bd; font: 700 9px/1 var(--sans); letter-spacing: .16em; }
 .preview-footnote { margin: 13px 0 0; color: #6c7478; font: 400 11px/1.45 var(--sans); }
 .customizer-benefits { max-width: 1060px; margin: 0 auto; padding: 19px 24px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; border-top: 1px solid #e5ded2; }
 .customizer-benefits div { display: flex; align-items: center; justify-content: center; gap: 9px; color: #43515a; font: 600 12px/1.4 var(--sans); }
 .customizer-benefits strong { color: #aa7823; font: 700 12px/1 var(--sans); letter-spacing: .1em; }
 .design-gallery > .section-band { color: #fff; background: var(--header); }
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .customizer { grid-template-columns: 1fr; max-width: 620px; gap: 28px; }
   .preview-column { position: static; grid-row: 1; }
   .product-preview { aspect-ratio: 1.2; }
@@ -380,8 +387,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
   .preview-heading h2 { font-size: 20px; }
   .preview-badge { font-size: 9px; }
   .product-preview { aspect-ratio: .95; }
-  .garment-art { width: 88%; height: 96%; }
-  .product-choices { gap: 6px; }
+  .product-choices { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
   .product-choice { min-height: 68px; font-size: 11px; }
   .customizer-benefits { padding: 17px 16px; grid-template-columns: 1fr; gap: 10px; }
   .customizer-benefits div { justify-content: flex-start; }

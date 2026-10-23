@@ -11,7 +11,7 @@
 <body data-page="personalizaciones">
   <header data-site-header></header>
   <main>
-    <section class="hero customizer-hero"><div class="hero-content"><span class="eyebrow">OSLUZ · Diseño textil personalizado</span><h1>Tu idea. Tu prenda.</h1><p>Personalizamos camisetas, hoodies y tote bags con el diseño que elijas.</p></div></section>
+    <section class="hero customizer-hero"><div class="hero-content"><span class="eyebrow">OSLUZ · Diseño textil personalizado</span><h1>Tu idea. Tu prenda.</h1><p>Personalizamos camisetas, hoodies, gorras y tote bags con tu diseño.</p></div></section>
     <section class="customizer-section">
       <form class="customizer" id="customizer-form">
         <div class="customizer-controls">
@@ -20,16 +20,18 @@
           <fieldset class="customizer-field"><legend>1. Elige el producto</legend><div class="product-choices">
             <label class="product-choice"><input type="radio" name="producto" value="Camiseta" checked><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 5 6 8 3 15l6 2 2-3v13h10V14l2 3 6-2-3-7-5-3c-.5 3-2.3 5-5 5s-4.5-2-5-5Z"/></svg></span><span>Camiseta</span></label>
             <label class="product-choice"><input type="radio" name="producto" value="Hoodie"><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M11 9 7 11l-3 5 4 2 2-2v11h12V16l2 2 4-2-3-5-4-2c0 3-2 5-5 5s-5-2-5-5Z"/><path d="M11 9c0-4 2-6 5-6s5 2 5 6"/></svg></span><span>Hoodie</span></label>
+            <label class="product-choice"><input type="radio" name="producto" value="Gorra"><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 19c1-7 6-12 13-12 6 0 10 5 10 11v3H5Z"/><path d="M5 20c6 3 15 3 23 0 1 4-4 7-11 7S5 24 5 20Z"/></svg></span><span>Gorra</span></label>
             <label class="product-choice"><input type="radio" name="producto" value="Tote bag"><span class="choice-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 12h20l-2 16H8Z"/><path d="M11 13V9a5 5 0 0 1 10 0v4"/></svg></span><span>Tote bag</span></label>
           </div></fieldset>
 
           <fieldset class="customizer-field"><legend>2. Escoge el color</legend><div class="color-choices">
-            <button class="color-swatch is-selected" type="button" data-color="#252a2d" data-color-name="Negro" style="--swatch:#252a2d" aria-label="Negro" aria-pressed="true"></button>
-            <button class="color-swatch" type="button" data-color="#f4f0e8" data-color-name="Marfil" style="--swatch:#f4f0e8" aria-label="Marfil" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#252a2d" data-color-name="Negro" style="--swatch:#252a2d" aria-label="Negro" aria-pressed="false"></button>
+            <button class="color-swatch is-selected" type="button" data-color="#f4f0e8" data-color-name="Marfil" style="--swatch:#f4f0e8" aria-label="Marfil" aria-pressed="true"></button>
+            <button class="color-swatch" type="button" data-color="#8b8b88" data-color-name="Gris" style="--swatch:#8b8b88" aria-label="Gris" aria-pressed="false"></button>
             <button class="color-swatch" type="button" data-color="#263d34" data-color-name="Verde bosque" style="--swatch:#263d34" aria-label="Verde bosque" aria-pressed="false"></button>
             <button class="color-swatch" type="button" data-color="#7a343d" data-color-name="Vino" style="--swatch:#7a343d" aria-label="Vino" aria-pressed="false"></button>
-            <span class="selected-color" id="selected-color">Negro</span>
-          </div><input type="hidden" name="color" value="Negro"></fieldset>
+            <span class="selected-color" id="selected-color">Marfil</span>
+          </div><input type="hidden" name="color" value="Marfil"></fieldset>
 
           <div class="customizer-field-row">
             <label class="customizer-field"><span>3. Talla</span><select name="talla"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option><option value="Talla única">Talla única</option></select><small class="size-hint">Tallas y colores sujetos a disponibilidad.</small></label>
@@ -44,23 +46,18 @@
         </div>
 
         <div class="preview-column"><div class="preview-heading"><div><span class="step-label">VISTA PREVIA</span><h2>Así podría verse</h2></div><span class="preview-badge">Mockup orientativo</span></div>
-          <div class="product-preview" id="product-preview" data-product="Camiseta" style="--garment-color:#252a2d">
-            <svg class="garment-art" data-garment="Camiseta" viewBox="0 0 360 390" role="img" aria-label="Vista previa de camiseta">
-              <path class="garment-shape" d="M111 47 147 29c5 17 16 27 33 27s28-10 33-27l36 18 69 48-38 59-38-25v211H118V129l-38 25-38-59z"/>
-              <path class="garment-detail" d="M147 30c3 18 15 29 33 29s30-11 33-29M118 129v211m110-211v211"/>
-            </svg>
-            <svg class="garment-art" data-garment="Hoodie" viewBox="0 0 360 390" role="img" aria-label="Vista previa de hoodie" hidden>
-              <path class="garment-shape" d="M119 75 145 58c-2-29 13-47 35-47s37 18 35 47l26 17 52 38-31 58-30-20v196H128V151l-30 20-31-58z"/>
-              <path class="garment-detail" d="M145 58c7 19 19 29 35 29s28-10 35-29m-35 29v39m-55 25v196m110-196v196m-89-59h68"/>
-            </svg>
-            <svg class="garment-art" data-garment="Tote bag" viewBox="0 0 360 390" role="img" aria-label="Vista previa de tote bag" hidden>
-              <path class="garment-shape" d="M85 120h190l-14 235H99z"/>
-              <path class="garment-detail" d="M130 126V90c0-28 18-48 50-48s50 20 50 48v36"/>
-            </svg>
-            <div class="print-area" aria-label="Área de estampado"><img id="design-preview" alt="Tu diseño sobre la prenda" hidden></div>
+          <div class="product-preview" id="product-preview" data-product="Camiseta" aria-live="polite">
+            <div class="product-photo-frame">
+              <img class="product-photo" data-product-image="Camiseta" src="assets/modelo-camiseta.png" alt="Modelo con camiseta blanca OSLUZ" loading="eager">
+              <img class="product-photo" data-product-image="Hoodie" src="assets/diseno-05.png" alt="Hoodie gris OSLUZ" loading="lazy" hidden>
+              <img class="product-photo" data-product-image="Gorra" src="assets/diseno-03.png" alt="Gorra color vino OSLUZ" loading="lazy" hidden>
+              <div class="tote-photo-crop" data-product-image="Tote bag" hidden><img src="assets/coleccion-accesorios-triptico.png" alt="Modelo sosteniendo tote bag verde OSLUZ" loading="lazy"></div>
+            </div>
+            <div class="print-area" aria-label="Área aproximada de estampado"><img id="design-preview" alt="Tu diseño sobre la prenda" hidden></div>
+            <span class="preview-color" id="preview-color"><i id="preview-color-dot"></i><span id="preview-color-name">Color elegido: Marfil</span></span>
             <span class="preview-product-name" id="preview-product-name">CAMISETA</span>
           </div>
-          <p class="preview-footnote">La ubicación se muestra como referencia. El resultado final se confirma contigo antes de producir.</p>
+          <p class="preview-footnote">Foto de referencia; el color, la ubicación y el resultado final se confirman al cotizar.</p>
         </div>
       </form>
     </section>
