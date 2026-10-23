@@ -3,6 +3,7 @@ const customizer = document.querySelector('#customizer-form');
 if (customizer) {
   const preview = document.querySelector('#product-preview');
   const designPreview = document.querySelector('#design-preview');
+  const shirtPhoto = preview.querySelector('[data-product-image="Camiseta"]');
   const fileInput = document.querySelector('#design-file');
   const fileName = document.querySelector('#upload-filename');
   const sizeInput = document.querySelector('#design-size');
@@ -31,6 +32,9 @@ if (customizer) {
       preview.querySelectorAll('[data-product-image]').forEach((photo) => {
         photo.hidden = photo.dataset.productImage !== product;
       });
+      document.querySelectorAll('.color-swatch[data-product-only]').forEach((swatch) => {
+        swatch.hidden = swatch.dataset.productOnly !== product;
+      });
       document.querySelector(`.color-swatch[data-color-name="${productBaseColors[product]}"]`)?.click();
       if (product === 'Tote bag' || product === 'Gorra') sizeSelect.value = 'Talla única';
       else if (sizeSelect.value === 'Talla única') sizeSelect.value = 'M';
@@ -49,6 +53,9 @@ if (customizer) {
       colorInput.value = swatch.dataset.colorName;
       document.querySelector('#selected-color').textContent = swatch.dataset.colorName;
       previewColorName.textContent = `Color elegido: ${swatch.dataset.colorName}`;
+      if (preview.dataset.product === 'Camiseta' && swatch.dataset.shirtImage) {
+        shirtPhoto.src = swatch.dataset.shirtImage;
+      }
     });
   });
 
