@@ -345,7 +345,12 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .upload-field:focus-within { outline: 3px solid #b3832c; outline-offset: 3px; }
 .upload-filename { margin-top: 10px; display: block; overflow-wrap: anywhere; }
 .size-control { display: grid; gap: 6px; }
+.size-control label > span { margin-bottom: 0; display: flex; align-items: center; justify-content: space-between; color: #263b4a; font: 700 14px/1.4 var(--sans); }
 .size-control input { width: 100%; accent-color: #a97823; }
+.design-position-tools { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.center-design-button { flex: 0 0 auto; padding: 6px 9px; border: 1px solid #d4ccc0; border-radius: 5px; color: #263f52; background: #fffefa; font: 700 11px/1.2 var(--sans); cursor: pointer; }
+.center-design-button:hover { border-color: #a97823; background: #fbf4e6; }
+.center-design-button:focus-visible { outline: 3px solid #b3832c; outline-offset: 2px; }
 .quote-button { width: 100%; min-height: 53px; margin-top: 1px; border: 0; background: #142d3d; font-size: 14px; }
 .quote-button:hover { background: #244b62; }
 .upload-disclaimer { margin: 11px 0 0; color: #686e72; text-align: center; font: 400 11px/1.5 var(--sans); }
@@ -363,18 +368,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .product-photo-frame { position: absolute; inset: 0; overflow: hidden; }
 .product-photo { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .product-photo[hidden] { display: none; }
-.print-area { position: absolute; z-index: 2; top: 54%; left: 50%; width: 58%; height: 38%; display: grid; place-items: center; transform: translate(-50%, -50%); pointer-events: none; }
-.print-area img { max-width: none; max-height: 100%; object-fit: contain; filter: drop-shadow(0 2px 2px #0002); transition: width .12s ease; }
+.print-area { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
+.print-area img { position: absolute; left: 50%; top: 54%; max-width: none; max-height: 100%; object-fit: contain; transform: translate(-50%, -50%); filter: drop-shadow(0 2px 2px #0002); cursor: grab; touch-action: none; user-select: none; -webkit-user-drag: none; transition: width .12s ease; pointer-events: auto; }
+.print-area img.is-dragging { cursor: grabbing; transition: none; }
 .print-area img[hidden] { display: none; }
-.product-preview[data-product="Hoodie"] .print-area { top: 54%; width: 55%; height: 40%; }
-.product-preview[data-product="Gorra"] .print-area { top: 48%; width: 38%; height: 32%; }
-.product-preview[data-product="Tote bag"] .print-area { top: 56%; width: 48%; height: 38%; }
 body[data-page="personalizaciones"] .whatsapp-float { display: none; }
 .preview-color { position: absolute; z-index: 3; top: 12px; left: 12px; max-width: calc(100% - 24px); padding: 7px 9px; display: flex; align-items: center; gap: 7px; border: 1px solid #ffffffa8; border-radius: 99px; color: white; background: #182530c9; box-shadow: 0 2px 8px #0002; font: 600 10px/1 var(--sans); }
 .preview-color i { width: 13px; height: 13px; flex: 0 0 13px; border: 1px solid #ffffff9c; border-radius: 50%; background: #f4f0e8; }
 .preview-product-name { position: absolute; z-index: 3; right: 13px; bottom: 11px; padding: 6px 8px; border-radius: 3px; color: white; background: #182530bd; font: 700 9px/1 var(--sans); letter-spacing: .16em; }
 .preview-footnote { margin: 13px 0 0; color: #6c7478; font: 400 11px/1.45 var(--sans); }
-.size-control > span:first-child { display: flex; align-items: center; justify-content: space-between; }
 .size-control output { padding: 4px 8px; border-radius: 99px; color: #6b542b; background: #f6edda; font: 700 11px/1 var(--sans); }
 .customizer-benefits { max-width: 1060px; margin: 0 auto; padding: 19px 24px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; border-top: 1px solid #e5ded2; }
 .customizer-benefits div { display: flex; align-items: center; justify-content: center; gap: 9px; color: #43515a; font: 600 12px/1.4 var(--sans); }

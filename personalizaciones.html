@@ -41,7 +41,7 @@
 
           <div class="customizer-field upload-field"><label for="design-file"><span class="step-label">4. TU DISEÑO</span><strong>Sube una imagen</strong><span class="upload-help">PNG transparente recomendado · JPG o WEBP · hasta 10 MB</span><span class="upload-button">Elegir archivo</span></label><input id="design-file" name="imagen" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-filename" id="upload-filename" aria-live="polite">No has elegido una imagen</span></div>
 
-          <label class="customizer-field size-control" for="design-size"><span>Tamaño del estampado <output id="design-size-value" for="design-size">55%</output></span><input id="design-size" type="range" min="20" max="110" value="55"><span class="size-hint">Amplía o reduce tu diseño en la vista previa</span></label>
+          <div class="customizer-field size-control"><label for="design-size"><span>Tamaño del estampado <output id="design-size-value" for="design-size">55%</output></span></label><input id="design-size" type="range" min="20" max="110" value="55"><div class="design-position-tools"><span class="size-hint" id="design-position-help">Arrastra el diseño sobre la prenda para ubicarlo.</span><button class="center-design-button" id="center-design" type="button">Centrar diseño</button></div></div>
           <button class="button button-primary quote-button" type="submit">Cotizar por WhatsApp <span aria-hidden="true">→</span></button>
           <p class="upload-disclaimer">WhatsApp abrirá con los datos de tu pedido. Después puedes enviar la imagen en ese mismo chat.</p>
         </div>
@@ -54,7 +54,7 @@
               <img class="product-photo" data-product-image="Gorra" src="https://images.unsplash.com/photo-1645266729222-17cd32e06fd0?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Gorra amarilla lisa sobre fondo claro" loading="lazy" hidden>
               <img class="product-photo" data-product-image="Tote bag" src="https://images.pexels.com/photos/9869067/pexels-photo-9869067.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Tote bag clara lisa extendida en plano" loading="lazy" hidden>
             </div>
-            <div class="print-area" aria-label="Área aproximada de estampado"><img id="design-preview" alt="Tu diseño sobre la prenda" hidden></div>
+            <div class="print-area" aria-label="Vista previa del diseño"><img id="design-preview" alt="Tu diseño sobre la prenda" aria-describedby="design-position-help" tabindex="0" draggable="false" hidden></div>
             <span class="preview-color" id="preview-color"><i id="preview-color-dot"></i><span id="preview-color-name">Color elegido: Marfil</span></span>
             <span class="preview-product-name" id="preview-product-name">CAMISETA</span>
           </div>

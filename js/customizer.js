@@ -8,6 +8,7 @@ if (customizer) {
   const fileInput = document.querySelector('#design-file');
   const fileName = document.querySelector('#upload-filename');
   const sizeInput = document.querySelector('#design-size');
+  const centerDesignButton = document.querySelector('#center-design');
   const colorInput = customizer.elements.color;
   const sizeSelect = customizer.elements.talla;
   const uniqueSizeOption = sizeSelect.querySelector('option[value="Talla única"]');
@@ -19,12 +20,51 @@ if (customizer) {
   const productBaseColors = { Camiseta: 'Marfil', Hoodie: 'Negro', Gorra: 'Amarillo', 'Tote bag': 'Marfil' };
   let currentObjectUrl = null;
   let previewSide = 'front';
+  let designPosition = { x: 50, y: 54 };
+  let dragOffset = null;
+  const designWidths = { Camiseta: 58, Hoodie: 55, Gorra: 38, 'Tote bag': 48 };
+  const designDefaults = { Camiseta: { x: 50, y: 54 }, Hoodie: { x: 50, y: 54 }, Gorra: { x: 50, y: 48 }, 'Tote bag': { x: 50, y: 56 } };
+  const garmentBounds = {
+    Camiseta: { left: 8, right: 92, top: 8, bottom: 92 },
+    Hoodie: { left: 7, right: 93, top: 7, bottom: 93 },
+    Gorra: { left: 27, right: 73, top: 25, bottom: 74 },
+    'Tote bag': { left: 18, right: 82, top: 10, bottom: 91 }
+  };
   uniqueSizeOption.hidden = true;
   const clearDesignPreview = () => {
     if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
     currentObjectUrl = null;
     designPreview.removeAttribute('src');
     designPreview.hidden = true;
+  };
+  const positionDesign = (x, y) => {
+    const bounds = garmentBounds[preview.dataset.product] || garmentBounds.Camiseta;
+    const previewRect = preview.getBoundingClientRect();
+    const width = designWidths[preview.dataset.product] || designWidths.Camiseta;
+    const widthPercent = width * Number(sizeInput.value) / 100;
+    const halfWidth = widthPercent / 2;
+    const imageRatio = designPreview.naturalWidth ? designPreview.naturalHeight / designPreview.naturalWidth : 1;
+    const halfHeight = (widthPercent * imageRatio / (previewRect.width / previewRect.height)) / 2;
+    const minX = Math.min(bounds.left + halfWidth, 49);
+    const maxX = Math.max(bounds.right - halfWidth, 51);
+    const minY = Math.min(bounds.top + halfHeight, 49);
+    const maxY = Math.max(bounds.bottom - halfHeight, 51);
+    designPosition = {
+      x: Math.min(maxX, Math.max(minX, x)),
+      y: Math.min(maxY, Math.max(minY, y))
+    };
+    designPreview.style.left = `${designPosition.x}%`;
+    designPreview.style.top = `${designPosition.y}%`;
+  };
+  const updateDesignSize = () => {
+    const baseWidth = designWidths[preview.dataset.product] || designWidths.Camiseta;
+    designPreview.style.width = `${baseWidth * Number(sizeInput.value) / 100}%`;
+    sizeValue.textContent = `${sizeInput.value}%`;
+    positionDesign(designPosition.x, designPosition.y);
+  };
+  const centerDesign = () => {
+    const position = designDefaults[preview.dataset.product] || designDefaults.Camiseta;
+    positionDesign(position.x, position.y);
   };
   const updateGarmentPhoto = () => {
     const product = preview.dataset.product;
@@ -53,6 +93,8 @@ if (customizer) {
       const product = input.value;
       preview.dataset.product = product;
       productName.textContent = product.toLocaleUpperCase('es');
+      designPosition = { ...designDefaults[product] || designDefaults.Camiseta };
+      updateDesignSize();
       preview.querySelectorAll('[data-product-image]').forEach((photo) => {
         photo.hidden = photo.dataset.productImage !== product;
       });
@@ -86,9 +128,46 @@ if (customizer) {
     });
   });
 
-  sizeInput.addEventListener('input', () => {
-    designPreview.style.width = `${sizeInput.value}%`;
-    sizeValue.textContent = `${sizeInput.value}%`;
+  sizeInput.addEventListener('input', updateDesignSize);
+  centerDesignButton.addEventListener('click', centerDesign);
+
+  designPreview.addEventListener('pointerdown', (event) => {
+    if (designPreview.hidden) return;
+    event.preventDefault();
+    const rect = preview.getBoundingClientRect();
+    dragOffset = {
+      pointerId: event.pointerId,
+      x: event.clientX - rect.left - (designPosition.x / 100) * rect.width,
+      y: event.clientY - rect.top - (designPosition.y / 100) * rect.height
+    };
+    designPreview.setPointerCapture(event.pointerId);
+    designPreview.classList.add('is-dragging');
+  });
+  designPreview.addEventListener('pointermove', (event) => {
+    if (!dragOffset || dragOffset.pointerId !== event.pointerId) return;
+    const rect = preview.getBoundingClientRect();
+    positionDesign(
+      ((event.clientX - rect.left - dragOffset.x) / rect.width) * 100,
+      ((event.clientY - rect.top - dragOffset.y) / rect.height) * 100
+    );
+  });
+  const endDesignDrag = (event) => {
+    if (!dragOffset || dragOffset.pointerId !== event.pointerId) return;
+    dragOffset = null;
+    designPreview.classList.remove('is-dragging');
+  };
+  designPreview.addEventListener('pointerup', endDesignDrag);
+  designPreview.addEventListener('pointercancel', endDesignDrag);
+  designPreview.addEventListener('keydown', (event) => {
+    const step = event.shiftKey ? 5 : 1;
+    const moves = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+    if (moves[event.key]) {
+      event.preventDefault();
+      positionDesign(designPosition.x + moves[event.key][0], designPosition.y + moves[event.key][1]);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      centerDesign();
+    }
   });
 
   fileInput.addEventListener('change', () => {
@@ -116,7 +195,8 @@ if (customizer) {
     currentObjectUrl = URL.createObjectURL(file);
     designPreview.src = currentObjectUrl;
     designPreview.hidden = false;
-    designPreview.style.width = `${sizeInput.value}%`;
+    updateDesignSize();
+    designPreview.onload = () => positionDesign(designPosition.x, designPosition.y);
     fileName.textContent = file.name;
   });
 
