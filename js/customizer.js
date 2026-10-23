@@ -12,11 +12,13 @@ if (customizer) {
   const sizeSelect = customizer.elements.talla;
   const uniqueSizeOption = sizeSelect.querySelector('option[value="Talla única"]');
   const productName = document.querySelector('#preview-product-name');
+  const sideSwitch = document.querySelector('[data-preview-side-switch]');
   const previewColorDot = document.querySelector('#preview-color-dot');
   const previewColorName = document.querySelector('#preview-color-name');
   const sizeValue = document.querySelector('#design-size-value');
   const productBaseColors = { Camiseta: 'Marfil', Hoodie: 'Negro', Gorra: 'Amarillo', 'Tote bag': 'Marfil' };
   let currentObjectUrl = null;
+  let previewSide = 'front';
   uniqueSizeOption.hidden = true;
   const clearDesignPreview = () => {
     if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
@@ -24,6 +26,27 @@ if (customizer) {
     designPreview.removeAttribute('src');
     designPreview.hidden = true;
   };
+  const updateGarmentPhoto = () => {
+    const product = preview.dataset.product;
+    const garment = product === 'Camiseta' ? 'shirt' : product === 'Hoodie' ? 'hoodie' : null;
+    const photo = garment === 'shirt' ? shirtPhoto : garment === 'hoodie' ? hoodiePhoto : null;
+    const swatch = document.querySelector('.color-swatch.is-selected');
+    if (!photo || !swatch) return;
+
+    const imageKey = `${garment}${previewSide === 'back' ? 'BackImage' : 'Image'}`;
+    if (swatch.dataset[imageKey]) photo.src = swatch.dataset[imageKey];
+    photo.alt = `${product} ${swatch.dataset.colorName.toLowerCase()} lisa, vista ${previewSide === 'back' ? 'trasera' : 'frontal'}`;
+  };
+
+  sideSwitch.querySelectorAll('[data-preview-side]').forEach((button) => {
+    button.addEventListener('click', () => {
+      previewSide = button.dataset.previewSide;
+      sideSwitch.querySelectorAll('[data-preview-side]').forEach((sideButton) => {
+        sideButton.setAttribute('aria-pressed', String(sideButton === button));
+      });
+      updateGarmentPhoto();
+    });
+  });
 
   customizer.querySelectorAll('input[name="producto"]').forEach((input) => {
     input.addEventListener('change', () => {
@@ -35,6 +58,11 @@ if (customizer) {
       });
       document.querySelectorAll('.color-swatch[data-product-only]').forEach((swatch) => {
         swatch.hidden = swatch.dataset.productOnly !== product;
+      });
+      sideSwitch.hidden = product !== 'Camiseta' && product !== 'Hoodie';
+      previewSide = 'front';
+      sideSwitch.querySelectorAll('[data-preview-side]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.previewSide === previewSide));
       });
       document.querySelector(`.color-swatch[data-color-name="${productBaseColors[product]}"]`)?.click();
       if (product === 'Tote bag' || product === 'Gorra') sizeSelect.value = 'Talla única';
@@ -54,12 +82,7 @@ if (customizer) {
       colorInput.value = swatch.dataset.colorName;
       document.querySelector('#selected-color').textContent = swatch.dataset.colorName;
       previewColorName.textContent = `Color elegido: ${swatch.dataset.colorName}`;
-      if (preview.dataset.product === 'Camiseta' && swatch.dataset.shirtImage) {
-        shirtPhoto.src = swatch.dataset.shirtImage;
-      }
-      if (preview.dataset.product === 'Hoodie' && swatch.dataset.hoodieImage) {
-        hoodiePhoto.src = swatch.dataset.hoodieImage;
-      }
+      updateGarmentPhoto();
     });
   });
 
