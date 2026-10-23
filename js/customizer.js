@@ -107,24 +107,10 @@ if (customizer) {
       `Color: ${formData.get('color')}`,
       `Talla: ${sizeSelect.value}`,
       `Cantidad: ${formData.get('cantidad')}`,
-      `Imagen: ${image ? image.name : 'Aún no he elegido una imagen'}`,
-      image ? 'Adjunto el archivo de imagen en este chat.' : 'Quiero recibir asesoría para definir el diseño.',
+      image ? 'Tengo una imagen de referencia y la enviaré después por este chat.' : 'Quiero recibir asesoría para definir el diseño.',
       '¿Me ayudan con el precio y el tiempo de entrega?'
     ].join('\n');
     const whatsappLink = `https://wa.me/573138070645?text=${encodeURIComponent(message)}`;
-    let shareFailed = false;
-    if (image && navigator.share && navigator.canShare) {
-      try {
-        if (navigator.canShare({ files: [image] })) {
-          await navigator.share({ title: 'Cotización OSLUZ', text: message, files: [image] });
-          return;
-        }
-      } catch (error) {
-        if (error.name === 'AbortError') return;
-        shareFailed = true;
-      }
-    }
-    if (shareFailed) window.location.assign(whatsappLink);
-    else window.open(whatsappLink, '_blank', 'noopener,noreferrer');
+    window.open(whatsappLink, '_blank', 'noopener,noreferrer');
   });
 }
