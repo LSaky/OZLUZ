@@ -4,6 +4,7 @@ if (customizer) {
   const preview = document.querySelector('#product-preview');
   const designPreview = document.querySelector('#design-preview');
   const shirtPhoto = preview.querySelector('[data-product-image="Camiseta"]');
+  const hoodiePhoto = preview.querySelector('[data-product-image="Hoodie"]');
   const fileInput = document.querySelector('#design-file');
   const fileName = document.querySelector('#upload-filename');
   const sizeInput = document.querySelector('#design-size');
@@ -55,6 +56,9 @@ if (customizer) {
       previewColorName.textContent = `Color elegido: ${swatch.dataset.colorName}`;
       if (preview.dataset.product === 'Camiseta' && swatch.dataset.shirtImage) {
         shirtPhoto.src = swatch.dataset.shirtImage;
+      }
+      if (preview.dataset.product === 'Hoodie' && swatch.dataset.hoodieImage) {
+        hoodiePhoto.src = swatch.dataset.hoodieImage;
       }
     });
   });
