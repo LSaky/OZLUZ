@@ -6,6 +6,7 @@
   <title>Diseña tu prenda | OSLUZ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/camiseta-marfil.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css"><script src="js/shell.js" defer></script><script src="js/customizer.js" defer></script>
 </head>
 <body data-page="personalizaciones">
@@ -25,11 +26,11 @@
           </div></fieldset>
 
           <fieldset class="customizer-field"><legend>2. Escoge el color</legend><div class="color-choices">
-            <button class="color-swatch" type="button" data-color="#252a2d" data-color-name="Negro" data-shirt-image="assets/camiseta-negro.png" data-shirt-back-image="assets/camiseta-negro-espalda.png" data-hoodie-image="assets/hoodie-negro.png" data-hoodie-back-image="assets/hoodie-negro-espalda.png" style="--swatch:#252a2d" aria-label="Negro" aria-pressed="false"></button>
-            <button class="color-swatch is-selected" type="button" data-color="#f4f0e8" data-color-name="Marfil" data-shirt-image="assets/camiseta-marfil.png" data-shirt-back-image="assets/camiseta-marfil-espalda.png" data-hoodie-image="assets/hoodie-marfil.png" data-hoodie-back-image="assets/hoodie-marfil-espalda.png" style="--swatch:#f4f0e8" aria-label="Marfil" aria-pressed="true"></button>
-            <button class="color-swatch" type="button" data-color="#8b8b88" data-color-name="Gris" data-shirt-image="assets/camiseta-gris.png" data-shirt-back-image="assets/camiseta-gris-espalda.png" data-hoodie-image="assets/hoodie-gris.png" data-hoodie-back-image="assets/hoodie-gris-espalda.png" style="--swatch:#8b8b88" aria-label="Gris" aria-pressed="false"></button>
-            <button class="color-swatch" type="button" data-color="#263d34" data-color-name="Verde bosque" data-shirt-image="assets/camiseta-verde-bosque.png" data-shirt-back-image="assets/camiseta-verde-bosque-espalda.png" data-hoodie-image="assets/hoodie-verde-bosque.png" data-hoodie-back-image="assets/hoodie-verde-bosque-espalda.png" style="--swatch:#263d34" aria-label="Verde bosque" aria-pressed="false"></button>
-            <button class="color-swatch" type="button" data-color="#7a343d" data-color-name="Vino" data-shirt-image="assets/camiseta-vino.png" data-shirt-back-image="assets/camiseta-vino-espalda.png" data-hoodie-image="assets/hoodie-vino.png" data-hoodie-back-image="assets/hoodie-vino-espalda.png" style="--swatch:#7a343d" aria-label="Vino" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#252a2d" data-color-name="Negro" data-shirt-image="assets/camiseta-negro.webp" data-shirt-back-image="assets/camiseta-negro-espalda.webp" data-hoodie-image="assets/hoodie-negro.webp" data-hoodie-back-image="assets/hoodie-negro-espalda.webp" style="--swatch:#252a2d" aria-label="Negro" aria-pressed="false"></button>
+            <button class="color-swatch is-selected" type="button" data-color="#f4f0e8" data-color-name="Marfil" data-shirt-image="assets/camiseta-marfil.webp" data-shirt-back-image="assets/camiseta-marfil-espalda.webp" data-hoodie-image="assets/hoodie-marfil.webp" data-hoodie-back-image="assets/hoodie-marfil-espalda.webp" style="--swatch:#f4f0e8" aria-label="Marfil" aria-pressed="true"></button>
+            <button class="color-swatch" type="button" data-color="#8b8b88" data-color-name="Gris" data-shirt-image="assets/camiseta-gris.webp" data-shirt-back-image="assets/camiseta-gris-espalda.webp" data-hoodie-image="assets/hoodie-gris.webp" data-hoodie-back-image="assets/hoodie-gris-espalda.webp" style="--swatch:#8b8b88" aria-label="Gris" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#263d34" data-color-name="Verde bosque" data-shirt-image="assets/camiseta-verde-bosque.webp" data-shirt-back-image="assets/camiseta-verde-bosque-espalda.webp" data-hoodie-image="assets/hoodie-verde-bosque.webp" data-hoodie-back-image="assets/hoodie-verde-bosque-espalda.webp" style="--swatch:#263d34" aria-label="Verde bosque" aria-pressed="false"></button>
+            <button class="color-swatch" type="button" data-color="#7a343d" data-color-name="Vino" data-shirt-image="assets/camiseta-vino.webp" data-shirt-back-image="assets/camiseta-vino-espalda.webp" data-hoodie-image="assets/hoodie-vino.webp" data-hoodie-back-image="assets/hoodie-vino-espalda.webp" style="--swatch:#7a343d" aria-label="Vino" aria-pressed="false"></button>
             <button class="color-swatch" type="button" data-product-only="Gorra" data-color="#efb536" data-color-name="Amarillo" style="--swatch:#efb536" aria-label="Amarillo" aria-pressed="false" hidden></button>
             <span class="selected-color" id="selected-color">Marfil</span>
           </div><input type="hidden" name="color" value="Marfil"></fieldset>
@@ -41,7 +42,6 @@
 
           <div class="customizer-field upload-field"><label for="design-file"><span class="step-label">4. TU DISEÑO</span><strong>Sube una imagen</strong><span class="upload-help">PNG transparente recomendado · JPG o WEBP · hasta 10 MB</span><span class="upload-button">Elegir archivo</span></label><input id="design-file" name="imagen" type="file" accept="image/png,image/jpeg,image/webp"><span class="upload-filename" id="upload-filename" aria-live="polite">No has elegido una imagen</span></div>
 
-          <div class="customizer-field size-control"><label for="design-size"><span>Tamaño del estampado <output id="design-size-value" for="design-size">55%</output></span></label><input id="design-size" type="range" min="20" max="110" value="55"><div class="design-position-tools"><span class="size-hint" id="design-position-help">Arrastra el diseño sobre la prenda para ubicarlo.</span><button class="center-design-button" id="center-design" type="button">Centrar diseño</button></div></div>
           <button class="button button-primary quote-button" type="submit">Cotizar por WhatsApp <span aria-hidden="true">→</span></button>
           <p class="upload-disclaimer">WhatsApp abrirá con los datos de tu pedido. Después puedes enviar la imagen en ese mismo chat.</p>
         </div>
@@ -49,15 +49,16 @@
         <div class="preview-column"><div class="preview-heading"><div><span class="step-label">VISTA PREVIA</span><h2>Así podría verse</h2></div><div class="preview-heading-actions"><div class="preview-side-switch" data-preview-side-switch role="group" aria-label="Vista de la prenda"><button type="button" data-preview-side="front" aria-pressed="true">Frente</button><button type="button" data-preview-side="back" aria-pressed="false">Espalda</button></div><span class="preview-badge">Mockup orientativo</span></div></div>
           <div class="product-preview" id="product-preview" data-product="Camiseta" aria-live="polite">
             <div class="product-photo-frame">
-              <img class="product-photo" data-product-image="Camiseta" src="assets/camiseta-marfil.png" alt="Camiseta marfil lisa extendida en plano" loading="eager">
-              <img class="product-photo" data-product-image="Hoodie" src="assets/hoodie-negro.png" alt="Hoodie negro liso extendido en plano" loading="lazy" hidden>
-              <img class="product-photo" data-product-image="Gorra" src="https://images.unsplash.com/photo-1645266729222-17cd32e06fd0?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="Gorra amarilla lisa sobre fondo claro" loading="lazy" hidden>
-              <img class="product-photo" data-product-image="Tote bag" src="https://images.pexels.com/photos/9869067/pexels-photo-9869067.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400" alt="Tote bag clara lisa extendida en plano" loading="lazy" hidden>
+              <img decoding="async" class="product-photo" data-product-image="Camiseta" src="assets/camiseta-marfil.webp" alt="Camiseta marfil lisa extendida en plano" loading="eager" fetchpriority="high">
+              <img decoding="async" class="product-photo" data-product-image="Hoodie" src="assets/hoodie-negro.webp" alt="Hoodie negro liso extendido en plano" loading="lazy" hidden>
+              <img decoding="async" class="product-photo" data-product-image="Gorra" src="assets/mockup-gorra.webp" alt="Gorra amarilla lisa sobre fondo claro" loading="lazy" hidden>
+              <img decoding="async" class="product-photo" data-product-image="Tote bag" src="assets/mockup-tote.webp" alt="Tote bag clara lisa extendida en plano" loading="lazy" hidden>
             </div>
-            <div class="print-area" aria-label="Vista previa del diseño"><img id="design-preview" alt="Tu diseño sobre la prenda" aria-describedby="design-position-help" tabindex="0" draggable="false" hidden></div>
+            <div class="print-area" aria-label="Vista previa del diseño"><img decoding="async" id="design-preview" alt="Tu diseño sobre la prenda" aria-describedby="design-position-help" tabindex="0" draggable="false" hidden></div>
             <span class="preview-color" id="preview-color"><i id="preview-color-dot"></i><span id="preview-color-name">Color elegido: Marfil</span></span>
             <span class="preview-product-name" id="preview-product-name">CAMISETA</span>
           </div>
+          <div class="customizer-field size-control"><label for="design-size"><span>Tamaño del estampado <output id="design-size-value" for="design-size">55%</output></span></label><input id="design-size" type="range" min="20" max="110" value="55"><div class="design-position-tools"><span class="size-hint" id="design-position-help">Arrastra el diseño sobre la prenda para ubicarlo.</span><button class="center-design-button" id="center-design" type="button">Centrar diseño</button></div></div>
           <p class="preview-footnote">Foto de referencia; el color, la ubicación y el resultado final se confirman al cotizar.</p>
         </div>
       </form>

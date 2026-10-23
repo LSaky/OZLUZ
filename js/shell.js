@@ -95,7 +95,7 @@ const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 1
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-const contactMarkup = `<a class="whatsapp-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Escribir a OSLUZ por WhatsApp"><img src="assets/whatsapp-icon.png" alt="WhatsApp" loading="lazy"></a><a class="qr-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Abrir enlace de WhatsApp del código QR"><img src="assets/whatsapp-qr.png" alt="Código QR de WhatsApp de OSLUZ" loading="lazy"></a>`;
+const contactMarkup = `<a class="whatsapp-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Escribir a OSLUZ por WhatsApp"><img decoding="async" src="assets/whatsapp-icon.webp" alt="WhatsApp" loading="lazy"></a><a class="qr-tile" href="https://wa.link/mg7ycv" target="_blank" rel="noopener noreferrer" aria-label="Abrir enlace de WhatsApp del código QR"><img decoding="async" src="assets/whatsapp-qr.png" alt="Código QR de WhatsApp de OSLUZ" loading="lazy"></a>`;
 document.querySelectorAll('[data-contact-links]').forEach((target) => { target.innerHTML = contactMarkup; });
 
 const whatsappUrl = (message) => `https://wa.me/573138070645?text=${encodeURIComponent(message)}`;
